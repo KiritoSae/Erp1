@@ -1,20 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login System</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>Login</h1>
+    <!-- LOGIN PAGE -->
+    <div class="login-container" id="loginPage">
 
-    <input type="text" placeholder="Username">
-    <br><br>
+        <h1>Login</h1>
 
-    <input type="password" placeholder="Password">
-    <br><br>
+        <p>Welcome! Please login to continue.</p>
 
-    <button>Login</button>
+        <form onsubmit="login(event)">
+
+            <div class="form-group">
+                <label for="username">Username</label>
+
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter username"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter password"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="login-button">
+                Login
+            </button>
+
+        </form>
+
+        <div class="footer-text">
+            My Website
+        </div>
+
+    </div>
+
+
+    <!-- DASHBOARD / LOGGED-IN PAGE -->
+    <div class="login-container" id="dashboard" style="display: none;">
+
+        <h1>Welcome!</h1>
+
+        <p>You are successfully logged in.</p>
+
+        <button class="login-button" onclick="logout()">
+            Logout
+        </button>
+
+        <div class="footer-text">
+            My Website
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        function login(event) {
+
+            event.preventDefault();
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Temporary login account
+            if (username === "admin" && password === "1234") {
+
+                document.getElementById("loginPage").style.display = "none";
+
+                document.getElementById("dashboard").style.display = "block";
+
+            } else {
+
+                alert("Incorrect username or password.");
+
+            }
+        }
+
+
+        function logout() {
+
+            document.getElementById("dashboard").style.display = "none";
+
+            document.getElementById("loginPage").style.display = "block";
+
+            document.getElementById("username").value = "";
+
+            document.getElementById("password").value = "";
+
+        }
+
+    </script>
 
 </body>
+
 </html>
